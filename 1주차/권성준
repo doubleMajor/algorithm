@@ -1,0 +1,49 @@
+릿코드
+
+class Solution {
+    public int[] twoSum(int[] nums, int target) {
+        int[] result = new int[2];
+
+        for (int i = 0; i < nums.length; i++) {
+            for (int j = i+1; j < nums.length; j++) {
+                if(target == nums[i]+nums[j]) {
+                    result[0] = i;
+                    result[1] = j;
+                }
+            }
+        }
+        return result;
+    }
+}
+
+프로그래머스
+
+class Solution {
+    public int[] solution(int numer1, int denom1, int numer2, int denom2) {
+        int[] answer = new int[2];
+        int children = denom1 * numer2 + denom2 * numer1;
+        int parent = denom1 * denom2;
+        
+        int divi = 1;
+
+        divi = divisor(children,parent);
+        
+        children = children/divi;
+        parent = parent/divi;
+
+        answer[0] = children;
+        answer[1] = parent;
+
+        return answer;
+    }
+
+    public static int divisor(int children, int parent) {
+        int result = 1;
+        for (int i = 1; i <= parent; i++) {
+            if(children % i == 0 && parent % i == 0) {
+                result = i;
+            }
+        }
+        return result;
+    }
+}
