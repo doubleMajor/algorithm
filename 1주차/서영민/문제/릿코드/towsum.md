@@ -23,7 +23,7 @@
 ---
 ### 최종 풀이 - TRY 1
 ![img.png](1week_leetcode_result.png)
-~~~
+~~~java
 class Solution {
     public int[] solution(int numer1, int denom1, int numer2, int denom2) {
         int[] answer = {
@@ -55,7 +55,7 @@ class Solution {
 ---
 ### TRY 1
 - 성공
-~~~
+~~~java
 class Solution {
     public int[] twoSum(int[] nums, int target) {
         HashMap<Integer, Integer> map = new HashMap<Integer, Integer>();
