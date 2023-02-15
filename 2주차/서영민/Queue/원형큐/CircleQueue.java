@@ -23,7 +23,7 @@ public class CircleQueue<T> implements YmQueue<T> {
         if (this.isFull()) throw new StackOverflowError("스택이 가득 가득~");
         if (this.isInit()) front++;
 
-        rear = (rear + 1) % queue.length;
+        rear = this.newIndex(rear);
 
         queue[rear] = data;
         dataSize++;
@@ -33,23 +33,42 @@ public class CircleQueue<T> implements YmQueue<T> {
     public T deQueue() {
         if (this.isEmpty()) throw new IllegalStateException("내보낼 데이터가 없습니다.");
 
-        front = (front + 1) % queue.length;
+        T data = queue[front];
+
+        front = this.newIndex(front);
 
         if (--dataSize == 0) {
             front = -1;
             rear = -1;
         }
-        return null;
+
+        return data;
     }
 
     @Override
     public T peek() {
-        return null;
+        return front == -1 ? null : queue[front];
+    }
+
+    public T peekRear() {
+        return rear == -1 ? null : queue[rear];
     }
 
     @Override
     public void clear() {
+        while (true) {
+            queue[front] = null;
 
+            if (front == rear) {
+                front = -1;
+                rear = -1;
+                dataSize = 0;
+
+                break;
+            }
+
+            front = this.newIndex(front);
+        }
     }
 
     @Override
@@ -70,5 +89,18 @@ public class CircleQueue<T> implements YmQueue<T> {
     @Override
     public int dataSize() {
         return dataSize;
+    }
+
+
+    public int newIndex(int index) {
+        return index = (index + 1) % queue.length;
+    }
+
+    public int getFront() {
+        return front;
+    }
+
+    public int getRear() {
+        return rear;
     }
 }

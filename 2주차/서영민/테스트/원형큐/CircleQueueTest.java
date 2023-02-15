@@ -1,19 +1,21 @@
+package 원형큐;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import 선형큐.LinerQueue;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
-public class LinerQueueTest {
+class CircleQueueTest {
 
-    private LinerQueue<String> queue = null;
-
+    private CircleQueue<String> queue = null;
+    private int size = 10;
+    
     @BeforeEach
     public void init() {
-        queue = new LinerQueue<String>(10);
+        queue = new CircleQueue<String>(size);
     }
 
     @DisplayName("enqueue 테스트")
@@ -29,7 +31,7 @@ public class LinerQueueTest {
 
         // then
         assertAll(
-                () -> assertEquals(queue.size(), 10),
+                () -> assertEquals(queue.size(), size),
                 () -> assertEquals(queue.dataSize(), 3),
                 () -> assertEquals(queue.peek(), "1"),
                 () -> assertFalse(queue.isEmpty()),
@@ -67,6 +69,7 @@ public class LinerQueueTest {
     @DisplayName("dequeue 테스트")
     @Test
     void deQueue() {
+
         // given
         queue.enQueue("1");
         queue.enQueue("2");
@@ -78,7 +81,7 @@ public class LinerQueueTest {
 
         // then
         assertAll(
-                () -> assertEquals(queue.size(), 10),
+                () -> assertEquals(queue.size(), size),
                 () -> assertEquals(queue.dataSize(), 1),
                 () -> assertEquals(queue.peek(), "3"),
                 () -> assertFalse(queue.isEmpty()),
@@ -89,6 +92,7 @@ public class LinerQueueTest {
     @DisplayName("dequeue empty 테스트")
     @Test
     void deQueueEmptyError() {
+
         // given
         queue.enQueue("1");
         queue.enQueue("2");
@@ -109,6 +113,45 @@ public class LinerQueueTest {
                 .message().isEqualTo("내보낼 데이터가 없습니다.");
     }
 
+    @DisplayName("dequeue/enqueue 테스트")
+    @Test
+    void randomQueue() {
+
+        // given
+        queue.enQueue("1");
+        queue.enQueue("2");
+        queue.enQueue("3");
+        queue.enQueue("4");
+        queue.enQueue("5");
+        queue.enQueue("6");
+        queue.enQueue("7");
+        queue.enQueue("8");
+        queue.enQueue("9");
+        queue.enQueue("10");
+
+        queue.deQueue();
+        queue.deQueue();
+        queue.deQueue();
+        queue.deQueue();
+
+        queue.enQueue("11");
+        queue.enQueue("12");
+
+        // when
+
+        // then
+        assertAll(
+                () -> assertEquals(queue.size(), size),
+                () -> assertEquals(queue.dataSize(), 8),
+                () -> assertEquals(queue.peek(), "5"),
+                () -> assertEquals(queue.peekRear(), "12"),
+                () -> assertEquals(queue.getFront(), 4),
+                () -> assertEquals(queue.getRear(), 1),
+                () -> assertFalse(queue.isEmpty()),
+                () -> assertFalse(queue.isFull())
+        );
+    }
+
     @DisplayName("PEEK")
     @Test
     void peek() {
@@ -117,17 +160,27 @@ public class LinerQueueTest {
         queue.enQueue("1");
         queue.enQueue("2");
         queue.enQueue("3");
+        queue.enQueue("4");
+        queue.enQueue("5");
+        queue.enQueue("6");
+        queue.enQueue("7");
+        queue.enQueue("8");
+        queue.enQueue("9");
+        queue.enQueue("10");
+
+        queue.deQueue();
+        queue.deQueue();
+        queue.deQueue();
+        queue.deQueue();
+
+        queue.enQueue("11");
+        queue.enQueue("12");
 
         // when
-        queue.deQueue();
 
         // then
         assertAll(
-                () -> assertEquals(queue.size(), 10),
-                () -> assertEquals(queue.dataSize(), 2),
-                () -> assertEquals(queue.peek(), "2"),
-                () -> assertFalse(queue.isEmpty()),
-                () -> assertFalse(queue.isFull())
+                () -> assertEquals(queue.peek(), "5")
         );
     }
 
@@ -139,19 +192,36 @@ public class LinerQueueTest {
         queue.enQueue("1");
         queue.enQueue("2");
         queue.enQueue("3");
+        queue.enQueue("4");
+        queue.enQueue("5");
+        queue.enQueue("6");
+        queue.enQueue("7");
+        queue.enQueue("8");
+        queue.enQueue("9");
+        queue.enQueue("10");
+
+        queue.deQueue();
+        queue.deQueue();
+        queue.deQueue();
+        queue.deQueue();
+
+        queue.enQueue("11");
+        queue.enQueue("12");
+
+        queue.deQueue();
+        queue.deQueue();
+        queue.deQueue();
+        queue.deQueue();
+        queue.deQueue();
+        queue.deQueue();
+        queue.deQueue();
+        queue.deQueue();
 
         // when
-        queue.deQueue();
-        queue.deQueue();
-        queue.deQueue();
 
         // then
         assertAll(
-                () -> assertEquals(queue.size(), 10),
-                () -> assertEquals(queue.dataSize(), 0),
-                () -> assertEquals(queue.peek(), null),
-                () -> assertTrue(queue.isEmpty()),
-                () -> assertFalse(queue.isFull())
+                () -> assertTrue(queue.isEmpty())
         );
     }
 
@@ -163,13 +233,28 @@ public class LinerQueueTest {
         queue.enQueue("1");
         queue.enQueue("2");
         queue.enQueue("3");
+        queue.enQueue("4");
+        queue.enQueue("5");
+        queue.enQueue("6");
+        queue.enQueue("7");
+        queue.enQueue("8");
+        queue.enQueue("9");
+        queue.enQueue("10");
+
+        queue.deQueue();
+        queue.deQueue();
+        queue.deQueue();
+        queue.deQueue();
+
+        queue.enQueue("11");
+        queue.enQueue("12");
 
         // when
         queue.clear();
 
         // then
         assertAll(
-                () -> assertEquals(queue.size(), 10),
+                () -> assertEquals(queue.size(), size),
                 () -> assertEquals(queue.dataSize(), 0),
                 () -> assertEquals(queue.peek(), null),
                 () -> assertTrue(queue.isEmpty()),
@@ -211,6 +296,16 @@ public class LinerQueueTest {
         queue.enQueue("9");
         queue.enQueue("10");
 
+        queue.deQueue();
+        queue.deQueue();
+        queue.deQueue();
+        queue.deQueue();
+
+        queue.enQueue("11");
+        queue.enQueue("12");
+        queue.enQueue("13");
+        queue.enQueue("14");
+
         // when
 
         // then
@@ -232,7 +327,7 @@ public class LinerQueueTest {
 
         // then
         assertAll(
-                () -> assertEquals(queue.size(), 10)
+                () -> assertEquals(queue.size(), size)
         );
     }
 
@@ -244,12 +339,27 @@ public class LinerQueueTest {
         queue.enQueue("1");
         queue.enQueue("2");
         queue.enQueue("3");
+        queue.enQueue("4");
+        queue.enQueue("5");
+        queue.enQueue("6");
+        queue.enQueue("7");
+        queue.enQueue("8");
+        queue.enQueue("9");
+        queue.enQueue("10");
+
+        queue.deQueue();
+        queue.deQueue();
+        queue.deQueue();
+        queue.deQueue();
+
+        queue.enQueue("11");
+        queue.enQueue("12");
 
         // when
 
         // then
         assertAll(
-                () -> assertEquals(queue.dataSize(), 3)
+                () -> assertEquals(queue.dataSize(), 8)
         );
     }
 }
