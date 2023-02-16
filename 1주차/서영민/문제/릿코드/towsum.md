@@ -1,5 +1,5 @@
-# 분수의 덧셈
-##### https://school.programmers.co.kr/learn/courses/30/lessons/120808
+# Two Sum
+##### https://leetcode.com/problems/two-sum/
 
 ## 문제 설명
 >Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
@@ -25,30 +25,22 @@
 ![img.png](1week_leetcode_result.png)
 ~~~java
 class Solution {
-    public int[] solution(int numer1, int denom1, int numer2, int denom2) {
-        int[] answer = {
-            numer1 * denom2 + numer2 * denom1, 
-            denom1 * denom2
-        };
-        
-        int divi = calcDivisor(answer[0], answer[1]);
-        
-        answer[0] /= divi;
-        answer[1] /= divi;
-        
-        return answer;
-    }
-    
-    private int calcDivisor(int a, int b) {
-        int maxDivisors = 1;
-        
-        for (int i = a; i > 1; i--) {
-            if (a % i == 0 && b % i == 0 && maxDivisors % i > 0) {
-                maxDivisors *= i;
-            }        
+    public int[] twoSum(int[] nums, int target) {
+        HashMap<Integer, Integer> map = new HashMap<Integer, Integer>();
+
+        for (int i = 0; i < nums.length ; i++) {
+            int n = nums[i];
+            int gap = target - n;
+            Integer gapIdx = map.get(gap);
+
+            if (gapIdx != null) {
+                return new int[]{gapIdx, i};
+            } else {
+                map.put(n, i);
+            }
         }
-        
-        return maxDivisors;
+
+        return null;
     }
 }
 ~~~

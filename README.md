@@ -21,5 +21,14 @@
 |**주차**|**결석**|**준비미흡**|
 |------|---|---|
 |1|x|x|
-|2|||
+|2|x|x|
 |3|||
+
+---
+## 주차별 문제
+- 1 주차
+  - [1] https://leetcode.com/problems/two-sum/
+  - https://school.programmers.co.kr/learn/courses/30/lessons/120808
+- 2주차
+  - [2073] https://leetcode.com/problems/time-needed-to-buy-tickets/
+  - https://school.programmers.co.kr/learn/courses/30/lessons/42587  
