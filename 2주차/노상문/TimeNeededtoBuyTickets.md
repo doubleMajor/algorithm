@@ -1,3 +1,4 @@
+```java
 package algorithm.leetcod;
 
 import org.junit.jupiter.api.Assertions;
@@ -66,3 +67,4 @@ class Solution {
         return timeRequiredToBuy;
     }
 }
+```
