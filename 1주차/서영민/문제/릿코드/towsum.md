@@ -1,5 +1,5 @@
 # Two Sum
-##### https://leetcode.com/problems/time-needed-to-buy-tickets/
+##### https://leetcode.com/problems/two-sum/
 
 ## 문제 설명
 >Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
