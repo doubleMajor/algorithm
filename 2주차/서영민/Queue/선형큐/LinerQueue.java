@@ -26,12 +26,7 @@ public class LinerQueue<T> implements YmQueue<T> {
         T data = queue[0];
 
         for (int i = 0; i < rear + 1; i++) {
-
-            if (i == rear) {
-                queue[i] = null;
-            } else {
-                queue[i] = queue[i + 1];
-            }
+            queue[i] = (i == rear) ? null : queue[i + 1];
         }
 
         rear--;
