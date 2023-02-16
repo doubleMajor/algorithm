@@ -7,7 +7,7 @@ public class Print {
     public static void main(String[] args) {
         Print print = new Print();
         int[] priorites = {1,1,9,1,1,1};
-        int location = 1;
+        int location = 2;
         int result = print.solution(priorites,location);
         System.out.println(result);
     }
