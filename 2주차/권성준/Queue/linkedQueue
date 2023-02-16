@@ -1,0 +1,82 @@
+class Node {
+    int value;
+    Node next;
+}
+
+class QueueTest {
+    private Node node;
+    final static int OVER = -1; // 큐가 꽉 찼을 때
+
+    public  QueueTest() {
+        node = null;
+    }
+
+    public void enqueue(int val) {
+        if(node == null) { // 노드가 비었을때
+            node = new Node();
+            node.value = val;
+            node.next = null;
+        }
+        else {
+            Node temp = node;
+            while(temp.next != null){
+                temp = temp.next;
+            }
+            temp.next = new Node();
+            temp.next.value = val;
+            temp.next.next =  null;
+        }
+    }
+
+    public int dequeue() {
+        if(node != null) {
+            int val = node.value;
+            node = node.next;
+            return val;
+        }
+        else
+            return QueueTest.OVER;
+    }
+
+    public boolean isEmpty() { // 비었는지 체크
+        if(node == null)
+            return true;
+        else
+            return false;
+    }
+
+    public int top() {
+        if(!this.isEmpty())
+            return node.value;
+        else
+            return QueueTest.OVER;
+    }
+
+}
+
+
+public class linkedQueue {
+
+    public static void main(String[] args) {
+        QueueTest queue = new QueueTest();
+
+        for(int i = 0; i < 10; i++) {// 테스트를 위한 값 세팅
+            queue.enqueue(i);
+        }
+
+        System.out.println(queue.top()); // 첫번재 값 뽑기
+
+        System.out.println("isEmpty :: " + queue.isEmpty()); // 값 존재여부
+
+        for(int i = 0; i < 10; i++) {// 하나씩 빼며서 값 찍기
+            System.out.println("dequeue" + i + " :: " + queue.dequeue());
+        }
+
+        System.out.println("dequeueOver :: " + queue.dequeue()); // 값이 없을 때 디큐 에러 뽑기
+
+        System.out.println("isEmpty :: " + queue.isEmpty()); // 값 존재여부
+
+
+    }
+
+}
