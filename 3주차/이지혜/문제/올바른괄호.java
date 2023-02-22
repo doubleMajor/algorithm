@@ -5,8 +5,9 @@ public class 올바른괄호 {
         올바른괄호 parenthesis = new 올바른괄호();
         //System.out.println("프로그래머스 올바른괄호 : " + parenthesis.checkParenthesis(")()("));
         //System.out.println("프로그래머스 올바른괄호 : " + parenthesis.checkParenthesis3("())(()"));
-        System.out.println("프로그래머스 올바른괄호 : " + parenthesis.checkParenthesis3("()()"));//true
         //System.out.println("프로그래머스 올바른괄호 : " + parenthesis.checkParenthesis("(())()"));
+        System.out.println("프로그래머스 올바른괄호 : " + parenthesis.checkParenthesis3("()()"));//true
+
     }
 
     public boolean checkParenthesis(String s){
