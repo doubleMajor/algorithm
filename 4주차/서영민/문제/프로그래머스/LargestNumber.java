@@ -10,6 +10,22 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class LargestNumber {
 
+    private static Stream<Arguments> providedTestCase() {
+        return Stream.of(
+                Arguments.of(new int[]{6, 10, 2}, "6210"),
+                Arguments.of(new int[]{3, 30, 34, 5, 9}, "9534330"),
+                Arguments.of(new int[]{10, 101}, "10110"),
+                Arguments.of(new int[]{51, 15}, "5115"),
+                Arguments.of(new int[]{121, 12}, "12121"),
+                Arguments.of(new int[]{0, 0, 0, 1000}, "1000000"),
+                Arguments.of(new int[]{2, 22, 223}, "223222"),
+                Arguments.of(new int[]{40, 405}, "40540"),
+                Arguments.of(new int[]{40, 404}, "40440"),
+                Arguments.of(new int[]{0, 0}, "0")
+
+        );
+    }
+
     @ParameterizedTest
     @MethodSource("providedTestCase")
     void largestNumber(int[] numbers, String solution) {
@@ -75,22 +91,4 @@ public class LargestNumber {
             return answerBuilder.toString();
         }
     }
-
-
-    private static Stream<Arguments> providedTestCase() {
-        return Stream.of(
-                Arguments.of(new int[]{6, 10, 2}, "6210"),
-                Arguments.of(new int[]{3, 30, 34, 5, 9}, "9534330"),
-                Arguments.of(new int[]{10, 101}, "10110"),
-                Arguments.of(new int[]{51, 15}, "5115"),
-                Arguments.of(new int[]{121, 12}, "12121"),
-                Arguments.of(new int[]{0, 0, 0, 1000}, "1000000"),
-                Arguments.of(new int[]{2, 22, 223}, "223222"),
-                Arguments.of(new int[]{40, 405}, "40540"),
-                Arguments.of(new int[]{40, 404}, "40440"),
-                Arguments.of(new int[]{0, 0}, "0")
-
-        );
-    }
-
 }

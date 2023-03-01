@@ -1,3 +1,34 @@
+## SOLUTION
+> ![img_1.png](img_1.png)
+~~~java
+import java.util.*;
+
+class Solution {
+    public String solution(int[] numbers) {
+        List<String> values = new ArrayList<>();
+        StringBuilder answerBuilder = new StringBuilder();
+
+        for (int i = 0; i < numbers.length; i++) {
+            final var n = numbers[i];
+
+            values.add(String.valueOf(n));
+        }
+
+        values.sort((o2, o1) -> o1.concat(o2).compareTo(o2.concat(o1)));
+        values.forEach(o -> answerBuilder.append(o));
+
+              
+        if (values.get(0).equals("0")) {
+            return "0";      
+        } else {
+            return answerBuilder.toString();
+        }
+
+    }
+}
+~~~
+
+---
 
 ## TRY 1
 > ![img.png](img.png)
@@ -45,6 +76,7 @@ class Solution {
 }
 ~~~
 
+---
 
 ## TRY2
 > ![img_1.png](img_1.png)
