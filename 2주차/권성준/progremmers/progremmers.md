@@ -4,14 +4,15 @@ public int solution(int[] priorities, int location) {
         int temp = priorities[0];
         int tempI = location;
 
-        for(int i = 0; i < priorities.length; i++) {
-        if(temp < priorities[i]) {
-        temp = priorities[i];
-        tempI = tempI + priorities.length-i+1;
-        }
-        if(tempI > priorities.length) {
-        tempI = tempI-priorities.length;
-        }
+        for (int i = 0; i < priorities.length; i++) {
+            if(temp < priorities[i]) {
+                temp = priorities[i];
+                tempI = tempI + priorities.length-i+1;
+            }
+
+            if(tempI > priorities.length) {
+                tempI = tempI-priorities.length;
+            }
         }
 
         return tempI;
@@ -28,18 +29,20 @@ public int solution(int[] priorities, int location) {
         PriorityQueue<Integer> priorityQueueHighest = new PriorityQueue<>(Collections.reverseOrder());
 
         int result = 0;
+
         for(int n : priorities){
-        priorityQueueHighest.add(n);
+            priorityQueueHighest.add(n);
         }
+
         Integer loca = priorities[location];
 
         while(!priorityQueueHighest.isEmpty()){
-        if((int)priorityQueueHighest.peek() == loca){
-        break;
+            if((int)priorityQueueHighest.peek() == loca) {
+            break;
         } else {
-        priorityQueueHighest.poll();
-        result++;
-        }
+            priorityQueueHighest.poll();
+            result++;
+            }
         }
 
         result = result + 1;
@@ -89,12 +92,13 @@ class Solution {
     public int timeRequiredToBuy(int[] tickets, int k) {
         int result = 0;
         for(int i = 0; i < tickets.length; i++){
+
             if(tickets[i] <= tickets[k]){
                 result = result + tickets[i];
-            }
-            else {
+            } else {
                 result = result + tickets[k];
             }
+
             if(i > k && tickets[i] >= tickets[k]) {
                 result--;
             }
