@@ -1,8 +1,7 @@
 ## LeetCode 1021. Remove Outermost Parentheses
 
 ### 문제
-
-![](img/스크린샷 2023-03-01 오후 10.47.54.png)
+![](img/2.png)
 
 ```java
 class Solution {
@@ -30,15 +29,13 @@ int stIdx = 0;
 ```
 
 ###속도
-
-![](img/스크린샷 2023-03-01 오후 10.47.41.png)
-
+![](img/1.png)
 
 ## 프로그래머스.가장큰수
 
 ###문제
+![](img/3.png)
 
-![](img/스크린샷 2023-03-01 오후 11.18.01.png)
 
 ```java
 import java.util.Arrays;
@@ -69,5 +66,6 @@ class Solution {
 
 ###속도
 
-![](img/스크린샷 2023-03-01 오후 11.18.08.png)
+
+![](img/4.png)
 
