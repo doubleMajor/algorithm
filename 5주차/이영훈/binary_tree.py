@@ -32,7 +32,17 @@ class BinaryTree:
                 self.postorder(node.right)
             print(node.val, end=' ')
 
-    # def levelorder(self, node):
+    def levelorder(self, node):
+        queue = []
+        queue.append(node)
+        while queue:
+            temp = queue.pop(0)
+            print(temp.val, end=' ')
+            if temp.left != None:
+                queue.append(temp.left)
+            if temp.right != None:
+                queue.append(temp.right)
+
 
 if __name__ == "__main__":
     tree = BinaryTree()
@@ -54,6 +64,17 @@ if __name__ == "__main__":
     n3.right = n7
     n4.left = n8
 
+    '''
+    트리구조
+              10
+            ／  ＼
+           20     30
+          ／ ＼  ／ ＼
+         40  50 60  70
+        ／
+       80
+    '''
+
     tree.preorder(tree.root)
     print()
 
@@ -61,3 +82,14 @@ if __name__ == "__main__":
     print()
 
     tree.postorder(tree.root)
+    print()
+
+    tree.levelorder(tree.root)
+
+    '''
+    출력결과
+    10 20 40 80 50 30 60 70 
+    80 40 20 50 10 60 30 70
+    80 40 50 20 60 70 30 10
+    10 20 30 40 50 60 70 80
+    '''
