@@ -1,0 +1,1 @@
+java $(dirname $0)/Solution.java
