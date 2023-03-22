@@ -33,15 +33,16 @@ class BinaryTree:
             print(node.val, end=' ')
 
     def levelorder(self, node):
-        queue = []
-        queue.append(node)
-        while queue:
-            temp = queue.pop(0)
-            print(temp.val, end=' ')
-            if temp.left != None:
-                queue.append(temp.left)
-            if temp.right != None:
-                queue.append(temp.right)
+        if node != None:
+            queue = []
+            queue.append(node)
+            while queue:
+                temp = queue.pop(0)
+                print(temp.val, end=' ')
+                if temp.left != None:
+                    queue.append(temp.left)
+                if temp.right != None:
+                    queue.append(temp.right)
 
 
 if __name__ == "__main__":
