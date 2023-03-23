@@ -75,3 +75,34 @@ class Solution {
 
 
 ```
+
+```java
+class BinarySearchTree {
+    TreeNode root;
+
+    void insert(int value) {
+        if (root == null) {
+            root = new TreeNode(value);
+        } else {
+            TreeNode current = root;
+            while (true) {
+                if (value < current.value) {
+                    if (current.left == null) {
+                        current.left = new TreeNode(value);
+                        break;
+                    }
+                    current = current.left;
+                } else {
+                    if (current.right == null) {
+                        current.right = new TreeNode(value);
+                        break;
+                    }
+                    current = current.right;
+                }
+            }
+        }
+    }
+}
+```
+
+이진 자료저리                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           3ㅇㅇㅇㅅ
