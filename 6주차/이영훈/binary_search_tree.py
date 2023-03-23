@@ -78,15 +78,19 @@ class BinarySearchTree(BinaryTree):
             if target.left and target.right:
                 #삭제할 노드 오른쪽에서 가장 작은 노드를 찾는다
                 change_node = target.right
-                change_node_parent = target.right
+                change_node_parent = target
                 while change_node.left != None:
                     change_node_parent = change_node
                     change_node = change_node.left
 
-                change_node.left = target.left
-                change_node_parent.left = change_node.right
-                change_node.right = target.right
-                parent.right = change_node
+                if change_node_parent == target:
+                    change_node.left = target.left
+                    parent.right = change_node
+                else:
+                    change_node.left = target.left
+                    change_node_parent.left = change_node.right
+                    change_node.right = target.right
+                    parent.right = change_node
                 
         else:
             print('Delete value not exist')
@@ -121,9 +125,35 @@ if __name__ == "__main__":
     2 1 3 1 2 3 4
     '''
 
+    print('-----delete 3-----')
     tree.delete(3)
     tree.levelorder(tree.root)
     print()
+    '''
+    출력결과
+    -----delete 3-----
+    2 1 4 1 2 3
+    '''
+
+    # delete 구현 참고 링크 참고
+    delete_sample = [27, 14, 35, 10, 19, 31, 42, 31, 40, 45, 36, 37, 38]
+    test_tree = BinarySearchTree()
+    for d in delete_sample:
+        test_tree.insert(d)
+
+    test_tree.levelorder(test_tree.root)
+    print()
+
+    print('-----delete 35-----')
+    test_tree.delete(35)
+    test_tree.levelorder(test_tree.root)
+    print()
+    '''
+    출력결과
+    27 14 35 10 19 31 42 31 40 45 36 37 38 
+    -----delete 35-----
+    27 14 36 10 19 31 42 31 40 45 37 38 
+    '''
     
 
 
