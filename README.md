@@ -34,3 +34,4 @@
 - 2주차
   - [2073] https://leetcode.com/problems/time-needed-to-buy-tickets/
   - https://school.programmers.co.kr/learn/courses/30/lessons/42587  
+  - 
