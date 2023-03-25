@@ -68,3 +68,45 @@ public class Main {
     }
 }
 ```
+
+```java
+public class Node {
+    int data;
+    Node left;
+    Node right;
+
+    public Node(int data) {
+        this.data = data;
+        this.left = null;
+        this.right = null;
+    }
+}
+
+public class BinaryTree {
+    Node root;
+
+    public BinaryTree() {
+        this.root = null;
+    }
+
+    public void insert(int data) {
+        Node newNode = new Node(data);
+
+        if (root == null) {
+            root = newNode;
+        } else {
+            insertNode(root, newNode);
+        }
+    }
+
+    private void insertNode(Node currentNode, Node newNode) {
+        if (currentNode.left == null) {
+            currentNode.left = newNode;
+        } else if (currentNode.right == null) {
+            currentNode.right = newNode;
+        } else {
+            insertNode(currentNode.left, newNode);
+        }
+    }
+}
+```

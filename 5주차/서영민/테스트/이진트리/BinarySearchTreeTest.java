@@ -18,7 +18,7 @@ class BinarySearchTreeTest {
     void add() {
 
         // given
-        BinarySearchTree<Integer> bst = new BinarySearchTree<>();
+        Traversal<Integer> bst = new Traversal<>();
 
         // when
         bst.add(10);
@@ -59,7 +59,7 @@ class BinarySearchTreeTest {
     void addRecursive() {
 
         // given
-        BinarySearchTree<Integer> bst = new BinarySearchTree<>();
+        Traversal<Integer> bst = new Traversal<>();
 
         // when
         bst.addRecursive(10);
@@ -100,7 +100,7 @@ class BinarySearchTreeTest {
     void find() {
 
         // given
-        BinarySearchTree<Integer> bst = new BinarySearchTree<>();
+        Traversal<Integer> bst = new Traversal<>();
         bst.addRecursive(10);
         bst.addRecursive(8);
         bst.addRecursive(6);
@@ -143,7 +143,7 @@ class BinarySearchTreeTest {
     void findRecursive() {
 
         // given
-        BinarySearchTree<Integer> bst = new BinarySearchTree<>();
+        Traversal<Integer> bst = new Traversal<>();
         bst.addRecursive(10);
         bst.addRecursive(8);
         bst.addRecursive(6);
@@ -196,7 +196,7 @@ class BinarySearchTreeTest {
     void remove1() {
 
         // given
-        BinarySearchTree<Integer> bst = new BinarySearchTree<>();
+        Traversal<Integer> bst = new Traversal<>();
         bst.addRecursive(10);
         bst.addRecursive(8);
         bst.addRecursive(6);
@@ -252,7 +252,7 @@ class BinarySearchTreeTest {
     void remove2() {
 
         // given
-        BinarySearchTree<Integer> bst = new BinarySearchTree<>();
+        Traversal<Integer> bst = new Traversal<>();
         bst.addRecursive(10);
         bst.addRecursive(8);
         bst.addRecursive(6);
@@ -311,7 +311,7 @@ class BinarySearchTreeTest {
     void remove3() {
 
         // given
-        BinarySearchTree<Integer> bst = new BinarySearchTree<>();
+        Traversal<Integer> bst = new Traversal<>();
         bst.addRecursive(10);
         bst.addRecursive(8);
         bst.addRecursive(6);
@@ -371,7 +371,7 @@ class BinarySearchTreeTest {
     void remove4() {
 
         // given
-        BinarySearchTree<Integer> bst = new BinarySearchTree<>();
+        Traversal<Integer> bst = new Traversal<>();
         bst.addRecursive(10);
         bst.addRecursive(8);
         bst.addRecursive(6);

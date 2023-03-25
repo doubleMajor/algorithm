@@ -23,6 +23,7 @@ public class FullBinaryTree {
     @MethodSource("providedTestCase")
     void largestNumber(long[] numbers, int[] solution) {
         final var results = this.solution(numbers);
+
         assertAll(
 //                () -> assertEquals(solution[0], results[0]),
                 () -> assertEquals(solution[1], results[1])
