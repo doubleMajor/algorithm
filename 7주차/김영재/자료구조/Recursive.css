@@ -1,0 +1,155 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+    overflow-y: hidden;
+}
+button:hover:enabled {
+    cursor: pointer;
+}
+ul {
+    width: 36vw;
+}
+
+#wrapper {
+    height: 100%;
+    padding: 3rem;
+    border-left: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+
+}
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+input {
+    text-align: right;
+}
+pre::before {
+    content: '';
+    position: absolute;
+    background-color: #e6e6e6;
+    border-right: 1px solid #ccc;
+    width: 30px;
+    height: 100%;
+    z-index: -99990;
+}
+pre {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #ccc;
+    font-family: monospace;
+    width: 40vw;
+    max-width: 100%;
+    padding: 0;
+    counter-reset: index;
+    position: relative;
+    background-color: #fafafa;
+    z-index: -99999;
+    
+}
+pre code::before {
+    counter-increment: index;
+    content: counter(index);
+    position: absolute;
+    text-align: right;
+    width: 30px;
+    margin-left: -45px;
+}
+pre code {
+    margin-left: 40px;
+}
+.main-wrapper {
+    width: 40vw;
+    min-height: 40vh;
+    border: 1px solid #ccc;
+    position: relative;
+}
+
+.main-wrapper > * {
+    margin-top: 10px;
+}
+
+.show {
+    display: block;
+}
+.hide {
+    display: none;
+}
+
+.recursive-wrapper {
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+    /* align-items: flex-end; */
+}
+
+.recursive-inner-wrapper {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+}
+.recursive-inner-wrapper > div:first-child {
+    margin-bottom: 20px;
+}
+
+.call-stack-wrapper {
+    min-width: 10vw;
+    min-height: 30vh;
+    margin-bottom: 40px;
+    display: flex;
+    align-items: center;
+    border-left: 5px solid black;
+    border-right: 5px solid black;
+    border-bottom: 5px solid black;
+}
+
+.call-stack-input {
+    flex-direction: column-reverse;
+}
+.call-stack-input::after {
+    content: 'Call Stack';
+    position: absolute;
+    bottom: 20px;
+    z-index: -9999999;
+}
+
+.call-stack-output {
+    flex-direction: column;
+}
+
+
+.call-stack-box {
+    min-width: 80%;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+    border: 1px solid black;
+}
+
+#factorialInput .call-stack-box {
+    /* height: 20px; */
+    /* border: unset; */
+    text-indent: 10px;
+    justify-content: unset;
+ 
+}
+
+.basic-ouput-p {
+    width: 100%;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid black;
+    /* background-color: black; */
+}
+
