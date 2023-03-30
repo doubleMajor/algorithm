@@ -6,17 +6,17 @@ const fibonacciTag = [];
 const factorialResult = {};
 const fibonacciResult = {};
 const exampleList = [
-    { 
-       id : 1 ,
-       name : 'basicWrapper' ,
+    {
+        id : 1 ,
+        name : 'basicWrapper' ,
     },
-    { 
-       id : 2 ,
-       name : 'factorialWrapper' ,
+    {
+        id : 2 ,
+        name : 'factorialWrapper' ,
     },
-    { 
-       id : 3 ,
-       name : 'fibonacciWrapper' ,
+    {
+        id : 3 ,
+        name : 'fibonacciWrapper' ,
     },
 ];
 
@@ -24,26 +24,26 @@ const basicInput = () => {
     if(basicFlag[0]) {
         allRemoveChildren('basicInput');
         allRemoveChildren('basicOutput');
-        
+
         disabledButton('basicInputButton');
 
         const call = (index) => {
             if(index == 10) {
                 return;
             }
-              
+
             call(++index);
-            
+
             sleep(1000*(index))
-            .then(() => {
-                const div = createDivTag(`console.log(${index})`, "call-stack-box")
-                addDescription('basicInput', div)
-                callStackDiv.push(div);         
-                if(index == 10) enabledButton('basicOutputButton');
-                basicFlag[1] = true;
-        
-            });
-        }   
+                .then(() => {
+                    const div = createDivTag(`console.log(${index})`, "call-stack-box")
+                    addDescription('basicInput', div)
+                    callStackDiv.push(div);
+                    if(index == 10) enabledButton('basicOutputButton');
+                    basicFlag[1] = true;
+
+                });
+        }
 
         basicFlag[0] = false;
         call(0);
@@ -57,14 +57,14 @@ const basicOutput = () => {
         disabledButton('basicOutputButton');
         for(let i = 1; i <= 10; i++) {
             sleep(1000*i)
-            .then(() => {
-                callStackDiv.pop().remove();
-                addDescription("basicOutput", createSpanTag(`${11-i} 출력`, "basic-ouput-p"));
-                if(i == 10) {
-                    enabledButton('basicInputButton');
-                    basicFlag[0] = true;
-                }
-            })
+                .then(() => {
+                    callStackDiv.pop().remove();
+                    addDescription("basicOutput", createSpanTag(`${11-i} 출력`, "basic-ouput-p"));
+                    if(i == 10) {
+                        enabledButton('basicInputButton');
+                        basicFlag[0] = true;
+                    }
+                })
         }
     }
 }
@@ -78,19 +78,19 @@ const factorialInput = () => {
         factorialFlag[0] = false;
         allRemoveChildren("factorialInput");
         allRemoveChildren("factorialOutput");
-        
+
         disabledButton('factorialInputButton')
 
         const val = document.getElementById("factorial").value;
 
         const factorial = (n, max) => {
             sleep(1000*(max-n)).then(() => {
-    
+
                 let text = `${n} * factorial(${n-1})`;
                 if(n === 1) text = '1';
-                
+
                 addDescription("factorialInput", createPTag(text, 'call-stack-box'));
-            
+
                 if(n == 1) {
                     enabledButton('factorialOutputButton')
                     factorialFlag[1] = true;
@@ -98,7 +98,7 @@ const factorialInput = () => {
             })
             if(n <= 1) {
                 return 1;
-            } 
+            }
             return n * factorial(n - 1, max);
         }
 
@@ -110,14 +110,15 @@ const factorialOutput = () => {
     if(factorialFlag[1]) {
         factorialFlag[1] = false;
         disabledButton('factorialOutputButton')
-     
-        addDescription("fibonacciOutput", createPTag('연산중....', 'call-stack-box'));
+
+        addDescription("factorialOutput", createPTag('연산중....', 'call-stack-box'));
 
         sleep(1000).then(() => {
 
             addDescription("factorialOutput", createPTag(`result = ${factorialResult.result}`, 'call-stack-box'));
-        
+
             factorialFlag[0] = true;
+            enabledButton("factorialInputButton");
         })
     }
 }
@@ -129,23 +130,23 @@ const fibonacciInput = () => {
         allRemoveChildren("fibonacciOutput");
 
         disabledButton('fibonacciInputButton');
-        
+
         const val = document.getElementById("fibonacci").value;
-        
-        
+
+
         const sleepCallback = (n) => {
             let text = `fibonacci(${n - 1}) +fibonacci(${n - 2})`;
-                if(n < 2) text = `${n}`;
-                
-                const p = createPTag(text, 'call-stack-box');
-                addDescription("fibonacciInput", p);
-                fibonacciTag.push(p);
-                if((fibonacciTag.length >= 1 && n == 0 || (fibonacciTag.length == 1 && n == 1))) {
-                    enabledButton('fibonacciOutputButton');
-                    fibonacciFlag[1] = true;
-                }
+            if(n < 2) text = `${n}`;
+
+            const p = createPTag(text, 'call-stack-box');
+            addDescription("fibonacciInput", p);
+            fibonacciTag.push(p);
+            if((fibonacciTag.length >= 1 && n == 0 || (fibonacciTag.length == 1 && n == 1))) {
+                enabledButton('fibonacciOutputButton');
+                fibonacciFlag[1] = true;
+            }
         }
-        
+
         const fibonacci = (n, max) => {
             if(fibonacciResult[n]) return fibonacciResult[n];
 
@@ -156,9 +157,9 @@ const fibonacciInput = () => {
 
                 return n;
             }
-            
+
             const result = fibonacci(n - 1, max) + fibonacci(n - 2, max);
-                        
+
             fibonacciResult[n] = result;
             sleep(1000*(max-n)).then(() => sleepCallback(n))
 
@@ -182,7 +183,7 @@ const fibonacciOutput = () => {
         addDescription("fibonacciOutput", createPTag('연산중....', 'call-stack-box'));
         for(let i = 0; i < length; i++) {
             fibonacciTag.pop().remove();
-            
+
             if(fibonacciTag.length == 0) {
                 sleep(1000).then(() => {
                     enabledButton('fibonacciInputButton');
@@ -201,7 +202,7 @@ const fibonacciOutput = () => {
 
 const show = (exampleId) => {
     exampleList.filter(example => example.id !== exampleId)
-                .forEach(example => document.getElementById(example.name).className = 'hide');
+        .forEach(example => document.getElementById(example.name).className = 'hide');
     document.getElementById(exampleList.find(example => example.id === exampleId).name).className = 'show';
 }
 
