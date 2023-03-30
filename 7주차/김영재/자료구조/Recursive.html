@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>재귀(Recursive)</title>
+        <link rel="stylesheet" type="text/css" href="Recursive.css"></link>
+    </head>
+    <body>
+        <div id = 'wrapper'>
+            <div>
+                <button onclick="show(1)">재귀 기본</button>
+                <button onclick="show(2)">팩토리얼</button>
+                <button onclick="show(3)">피보나치 수열</button>
+            </div>
+            <div id="basicWrapper">
+                <h1>재귀 함수의 정의</h1>
+                <ul>
+                    <li>
+                        함수 안에 자신의 함수를 다시 호출하는 함수
+                    </li>
+                    <li>
+                        자신의 로직을 내부적으로 반복하다가, 일정한 조건이 만족되면 함수를 이탈하여 결과를 도출
+                    </li>
+                    <li>
+                        재귀 호출을 너무 많이 하게 되면 스택 메모리 영역에 너무 많은 공간을 할당하게 되어 스택 오버플로우가 발생할 수 있다.
+                    </li>
+                    </li>
+                    <li>
+                        기본적으로, 함수가 호출 될 때 공간이 할당되고 해당 함수가 종료 될 때 해제 되는 메모리 영역을 Call Stack으로 나타낸다.
+                    </li>
+                    </li>
+                    <li>
+                        함수가 호출 될 때마다, Call Stack에 메모리가 할당되며(스택 프레임이라고 한다.) 재귀 호출이 종료되는 시점에서 순서대로 함수를 실행한다.
+                    </li>
+        
+                </ul>
+                <pre>
+                    <code>function recursive() {</code>
+                    <code>  call(0);</code>
+                    <code>}</code>
+                    <code>function call(index) {</code>
+                    <code>  if(index == 10) {</code>
+                    <code>      return;</code>
+                    <code>  }</code>
+                    <code>  call(++index);</code>
+                    <code>  console.log(index);</code>
+                    <code>}</code>
+                </pre>
+                <div class = 'main-wrapper'>
+                    <div class = "recursive-wrapper">
+                        <div class = "recursive-inner-wrapper">
+                            <div>
+                                <span> 입력 : </span>
+                                <button id = "basicInputButton" onclick="basicInput()" >클릭</button>
+                            </div>
+                            <div id = "basicInput" class="call-stack-wrapper call-stack-input"></div>
+                            
+                        </div>
+                        <div class = "recursive-inner-wrapper">
+                            <div>
+                                <span> 출력</span>
+                                <button id = "basicOutputButton" onclick="basicOutput()" disabled="true">클릭</button>
+                            </div>
+                            <div id = "basicOutput" class = "call-stack-wrapper call-stack-output">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="factorialWrapper" class="hide">
+                <h1>재귀 함수 연습 1 - 팩토리얼</h1>
+                <ul>
+                    <li>
+                        팩토리얼 계산을 재귀 함수로 구현해보자.
+                    </li>
+                    <li>
+                        팩토리얼을 수식으로 나타내면 <pre style="max-width:15vw;"><code>N! = N*(N-1)*(N-2)*....*1</code></pre> 이고, 0!, 1!의 값은 항상 1이 되기로 약속되어 있다.
+                    </li>
+                    <li>
+                        이러한 수식을 구현하기 위해 n이 1보다 클 경우 n * (n-1)...을 반복적으로 해주고 1보다 같거나 작을 경우 1을 반환하는 함수를 구현한다.
+                    </li>
+                    <li>
+                        아래 함수에서 factorial(3)을 구한다고 하면, 해당 함수는 
+                        <br>
+                        <pre>
+                            <code>3 * factorial(3-1) =></code>
+                            <code>3 * 2 * factorail(2-1) =></code>
+                            <code>3 * 2 * 1 => </code>
+                            <code>결과 : 6</code>
+                        </pre>
+                        이 된다.
+                    </li>
+
+                </ul>
+                <pre>
+                    <code>function recursive() {</code>
+                    <code>  factorial(number);</code>
+                    <code>}</code>
+                    <code>function factorial(n) {</code>
+                    <code>  if(n <= 1) {</code>
+                    <code>      return 1;    </code>
+                    <code>  } </code>
+                    <code>  return n * factorial(n - 1);</code>
+                    <code>}</code>
+                </pre>
+                <div class = 'main-wrapper'>
+                    <div class = "recursive-wrapper">
+                        <div class = "recursive-inner-wrapper">
+                            <div>
+                                <span>factorial : <input id="factorial" type="number" style="max-width:20px" max="10" min="1"/> !</span>
+                                <button id = "factorialInputButton" onclick="factorialInput()" >입력</button>
+                            </div>
+                            <div id = "factorialInput" class="call-stack-wrapper call-stack-input"></div>
+                            
+                        </div>
+                        <div class = "recursive-inner-wrapper">
+                            <div>
+                                <span> 출력</span>
+                                <button id = "factorialOutputButton" onclick="factorialOutput()" disabled="true">클릭</button>
+                            </div>
+                            <div id = "factorialOutput" class = "call-stack-wrapper call-stack-output">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="fibonacciWrapper" class="hide">
+                <h1>재귀 함수 연습 2 - 피보나치 수열</h1>
+                <ul>
+                    <li>
+                        N번째 피보나치 수열 재귀 함수를 구현해 구해보자.
+                    </li>
+                    <li>
+                        피보나치 수열의 수식은 <pre style="max-width:15vw;"><code>f(n) = (fn-1) + f(n-2)</code></pre> 이고, f(0), f(1)은 각각 0과 1이다.
+                    </li>
+                    <li>
+                        이러한 수식을 구현하기 위해, f(0)부터 f(n-1)과 f(0)부터 f(n-2)를 더하는 함수를 구현한다.
+                    </li>
+                    <li>
+                        아래 함수에서 fibonacci(3)을 구한다고 하면, 해당 함수는 
+                        <br>
+                        <pre>
+                            <code>fibonacci(3-1) + fibonacci(3-2) =></code>
+                            <code>(fibonacci(2) => fibonacci(2-1) + fibonacci(2-2)) + (fibonacci(1)) =></code>
+                            <code>(fibonacci(1) + fibonacci(0)) + 1 => </code>
+                            <code>(1 + 0) + 1 => </code>
+                            <code>결과 : 2</code>
+                        </pre>
+                        이 된다.
+                    </li>
+
+                </ul>
+                <pre>
+                    <code>function recursive() {</code>
+                    <code>  fibonacci(number);</code>
+                    <code>}</code>
+                    <code>function fibonacci(n) {</code>
+                    <code>  if(n < 2) {</code>
+                    <code>      return x;    </code>
+                    <code>  } </code>
+                    <code>  return fibonacci(n - 1) + fibonacci(n - 2);</code>
+                    <code>}</code>
+                </pre>
+                <div class = 'main-wrapper'>
+                    <div class = "recursive-wrapper">
+                        <div class = "recursive-inner-wrapper">
+                            <div>
+                                <span>fibonacci : <input id="fibonacci" type="number" style="max-width:20px" max="10" min="1"/></span>
+                                <button id = "fibonacciInputButton" onclick="fibonacciInput()" >입력</button>
+                            </div>
+                            <div id = "fibonacciInput" class="call-stack-wrapper call-stack-input"></div>
+                            
+                        </div>
+                        <div class = "recursive-inner-wrapper">
+                            <div>
+                                <span> 출력</span>
+                                <button id = "fibonacciOutputButton" onclick="fibonacciOutput()" disabled="true">클릭</button>
+                            </div>
+                            <div id = "fibonacciOutput" class = "call-stack-wrapper call-stack-output">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+    <script src="Recursive.js"></script>
+</html>
+
