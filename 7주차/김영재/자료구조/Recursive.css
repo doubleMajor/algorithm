@@ -3,8 +3,8 @@ body {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    height: 100vh;
-    overflow-y: hidden;
+    min-height: 100vh;
+    /* overflow-y: hidden; */
 }
 button:hover:enabled {
     cursor: pointer;
@@ -50,7 +50,7 @@ pre {
     position: relative;
     background-color: #fafafa;
     z-index: -99999;
-    
+
 }
 pre code::before {
     counter-increment: index;
@@ -140,7 +140,7 @@ pre code {
     /* border: unset; */
     text-indent: 10px;
     justify-content: unset;
- 
+
 }
 
 .basic-ouput-p {
