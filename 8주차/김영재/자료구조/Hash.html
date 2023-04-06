@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>해시(Hash)</title>
+        <link rel="stylesheet" type="text/css" href="Common.css"></link>
+        <link rel="stylesheet" type="text/css" href="Hash.css"></link>
+    </head>
+    <body>
+        <div id = 'wrapper' class="content-wrapper">
+            <div>
+                <button onclick="show(exampleList, 1)">해시 기본</button>
+                <button onclick="show(exampleList, 2)">해시 테이블</button>
+                <button onclick="show(exampleList, 3)">해시 충돌</button>
+            </div>
+            <div id="basicWrapper">
+                <h1>해시의 정의 및 해시 함수(Hash definitions and hash function)</h1>
+                <ul>
+                    <li>
+                        어떤 길이의 임의 데이터를 고정 길이의 데이터로 매핑하는 것
+                    </li>
+                    <li>
+                        해시 함수는 이 해시를 실행하려고 하나의 값을 다른 값으로 변환하는 상자
+                    </li>
+                    <li>
+                        해시 함수를 사용하여 동작하는 해시 테이블이 존재한다, 이것은 컴퓨터 보안의 암호화와 체크섬에 크게 의존된다.
+                    </li>
+                    <li>
+                        해시 함수의 평균 시간 복잡도는 key값을 인덱스로 변환하기 때문에 O(1)이다. 다만 항상 O(1)인 것은 아니다(해시 충돌 방지를 위한 체이닝).
+                    </li>
+                    <li>
+                        매핑전 원래 데이터 값을 key, 매핑 후 데이터의 값을 해시 값이라고 하고 매핑 과정을 해싱이라고 한다.
+                    </li>
+                    <li>
+                        해시 함수를 사용하다 보면 서로 다른 key를 입력하였는데도, 같은 해시 값이 나오는 경우가 있는데, 이런 경우 해시 충돌(collision)이라고 한다. 
+                        ex : (key, yek)
+                    </li>
+                    </li>
+        
+                </ul>
+                <pre>
+                    <code>//간단한 해시 함수 예제</code>
+                    <code>function hash(str) {</code>
+                    <code>  let hash = 31;</code>
+                    <code>  </code>
+                    <code>  for(let i=0; i < str.length; i++) {</code>
+                    <code>      hash *= s.charCodeAt(i);</code>
+                    <code>  }</code>
+                    <code>return hash;</code>
+                </pre>
+                <div class = 'main-wrapper'>
+                    <div>
+                        <input id = 'planeText' />
+                    </div>                        
+                    <div>
+                        <button onclick="createHash()">해시 만들기</button>
+                    </div>
+                    <div id = 'hashTextWrapper'>
+                        
+                    </div>
+                </div>
+            </div>
+            <div id = 'hashTableWrapper'>
+                <h1>해시 테이블(Hash Table)</h1>
+                <ul>
+                    <li>
+                        key를 해시 함수를 이용하여 hash값으로 변경한 뒤 변경한 hash값을 index로 사용하여 Key - value 형식으로 저장하는 자료구조
+                    </li>
+                    <li>
+                        해시 테이블은 순서가 없이 key - value로만 값을 저장하여 순서가 필요한 데이터에는 적합하지 않다, 하지만 순서가 없기 때문에 일반적으로 다른 자료구조에 비해 빠른 속도로 삽입, 삭제, 탐색이 가능하다.
+                    </li>
+                </ul>
+                <h2>해시 테이블의 장점</h2>
+                <ul>
+                    <li>key - value의 1 대 1 매칭 구조로 삽입, 삭제, 검색 모두 일반적으로 O(1)의 시간 복잡도를 가진다.</li>
+                </ul>
+                </ul>
+                <h2>해시 테이블의 단점</h2>
+                <ul>
+                    <li>데이터가 저장 되기 전에 미리 공간을 만들어놔야 하므로 공간 효율성이 떨어진다.</li>
+                    <li>해시 함수를 이용하여 인덱스를 만들기 때문에, 해시 함수의 성능에 따라 속도가 차이가 날 수 있다.</li>
+                    <li>인덱스는 해시 함수가 정하기 때문에 순서를 보장하지 않는다.</li>
+                    <li>만약 해시 충돌이 일어날 경우 같은 키 값에 데이터들이 몰려 있기 때문에 O(n)의 시간 복잡도를 가진다.</li>
+                </ul>
+                <pre>
+                    <code>class HashTable {</code>
+                    <code>  constructor (size) {</code>
+                    <code>      //size 만큼 미리 공간을 만든다.</code>
+                    <code>      this.table = new Array(size).fill({key : null, value : -1});</code>
+                    <code>  }</code>
+                    <code>  setItem(key, value) {</code>
+                    <code>      const index = hash(key) % this.table.length;</code>
+
+                    <code>      this.table[index] = {key, value};</code>
+                    <code>  }</code>
+                    <code></code>
+                    <code>  getItem(key) {</code>
+                    <code>      const index = hash(key) % this.table.length;</code>
+                    <code>      const data = this.table[index];</code>
+                    <code>      return data.key === key ? data.value : null;</code>
+                    <code>  }</code>
+                    <code>}</code>
+                </pre>
+                <div class = 'main-wrapper'>
+                    <div>
+                        <div>
+                            <input id = 'hashTableSize' />
+                            <button onclick="createHashTable()">해시 테이블 만들기</button>
+                        </div>
+                        <div>
+                            key : 
+                            <input id = 'inputKey' />
+                            value : 
+                            <input id = 'inputValue' />
+                            <button onclick="set()">입력</button>
+                        </div>
+                        <div>
+                            key :
+                            <input id = 'outputKey' />
+                            <button onclick="get()">출력</button>
+                        </div>
+                    </div>                        
+                    <div>
+                        <h3>해시 테이블</h3>
+                        <table id = 'printHashTable'></table>
+                    </div>
+                    <div id = 'outPutHashTableWrapper'>
+                        
+                    </div>
+                </div>
+            </div>
+            <div id = 'hashCollisionWrapper'>
+                <h1>해시 충돌(Hash collision)</h1>
+                <ul>
+                    <li>
+                        해시 함수를 사용하다 보면 서로 다른 key를 입력하였는데도, 같은 해시 값이 나오는 경우가 있는데, 이런 경우 해시 충돌(collision)이라고 한다. 
+                    </li>
+                    <li>
+                        이를 해결하는 방법은 Chaining, Open Addressing이 있다.
+                    </li>
+                </ul>
+                <h2>Chaining</h2>
+                <ul>
+                    <li>
+                        Chanining 방식은 같은 저장소에 충돌이 일어날 경우 해당 인덱스에 연결리스트 형태로 저장하는 방법
+                    </li>
+                    <li>
+                        단점으로는 하나의 인덱스에 데이터가 몰렸을 경우, 시간복잡도가 증가합니다.
+                    </li>
+                </ul>
+                <pre>
+                    <code>class HashTable {</code>
+                        <code>  constructor (size) {</code>
+                        <code>      //size 만큼 미리 공간을 만든다.</code>
+                        <code>      this.table = new Array(size).fill(-1).map(v => ({index: -1, data: []}));</code>
+                        <code>  }</code>
+                        <code>  setItem(key, value) {</code>
+                        <code>      const index = hash(key) % this.table.length;</code>
+                        <code></code>
+                        <code>      let flag = false;</code>
+                        <code>      const hashData = {index, data : this.table[index].data};</code>
+                        <code>    </code>
+                        <code>      const data = this.table[index].data?.map(data => {</code>
+                        <code>          if(data.key === key) {</code>
+                        <code>              flag = true;</code>
+                        <code>              data = {key, value};</code>
+                        <code>          }</code>
+                        <code>          return data;</code>
+                        <code>      });</code>
+                        <code>      flag ? hashData.data = data :hashData.data.push({key, value});</code>
+                        <code></code>
+                        <code>      this.table[index] = hashData;</code>
+                        <code>  }</code>
+                        <code></code>
+                        <code>  getItem(key) {</code>
+                        <code>      const index = hash(key) % this.table.length;</code>
+                        <code>      const {data} = this.table[index];</code>
+                        <code>      return data.find(v => v.key === key)?.value || null;</code>
+                        <code>  }</code>
+                        <code>}</code>
+                </pre>
+                <div class = 'main-wrapper'>
+                    <div>
+                        <div>
+                            <input id = 'chainingHashTableSize' />
+                            <button onclick="createChainingHashTable()">해시 테이블 만들기</button>
+                        </div>
+                        <div>
+                            key : 
+                            <input id = 'inputChainingKey' />
+                            value : 
+                            <input id = 'inputChainingValue' />
+                            <button onclick="setChaining()">입력</button>
+                        </div>
+                        <div>
+                            key :
+                            <input id = 'outputChainingKey' />
+                            <button onclick="getChaining()">출력</button>
+                        </div>
+                    </div>                        
+                    <div>
+                        <h3>해시 테이블(Chanining)</h3>
+                        <table id = 'printChainingHashTable'></table>
+                    </div>
+                    <div id = 'outPutChainingHashTableWrapper'>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+    <script>
+        const exampleList = [
+            { 
+            id : 1 ,
+            name : 'basicWrapper' ,
+            },
+            { 
+            id : 2 ,
+            name : 'hashTableWrapper' ,
+            },
+            { 
+            id : 3 ,
+            name : 'hashCollisionWrapper' ,
+            },
+        ]
+        window.onload = () => show(exampleList, 1);
+    </script>
+    <script src="Common.js"></script>
+    <script src="Hash.js"></script>
+</html>
+
