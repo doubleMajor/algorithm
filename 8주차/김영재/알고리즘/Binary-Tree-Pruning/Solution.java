@@ -16,4 +16,27 @@ class Solution {
     private boolean isPrune(TreeNode root) {
         return root != null && root.val == 0 && (root.left == null || root.left.val == 0) && (root.right == null || root.right.val == 0);
     }
+
+    /*
+      //스포
+      //스포
+      //스포
+      //스포
+      //스포
+      //스포
+      //스포
+      //스포
+      //스포
+      public TreeNode pruneTree(TreeNode root) {
+            if (root == null) {
+              return null;
+            }
+            root.left = pruneTree(root.left);
+            root.right = pruneTree(root.right);
+            if (root.left == null && root.right == null && root.val == 0) {
+              return null;
+            }
+            return root;
+          }
+     */
 }
