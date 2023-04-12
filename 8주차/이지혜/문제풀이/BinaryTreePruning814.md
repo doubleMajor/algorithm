@@ -6,7 +6,7 @@
 ### 풀이법
 - 깊이우선 탐색으로 풀어보자
 - 해결 시 어려웠던 점 
-  - 루트노드도 바꿔야했을때 당황함.
+  - 루트노드도 바꿔야했을때 당황함.  [0] 
 
 ### 풀이
 ```java
@@ -36,7 +36,7 @@ class Solution {
             return false;
         }
 
-        return root.val == 1 || leftValue || rightValue;
+        return true;
     }
 
 }
@@ -45,3 +45,14 @@ class Solution {
 
 ![img_3.png](img_3.png)
 
+
+- Thiamin 20 mg
+- Riboflavin 20 mg
+- Niacin 140mg
+- Vitamin B6 20mg
+- Folate 600 mcg DFE
+- Vitamin B12  400mcg
+- Biotin 400mcg
+- Pantothenic Acid 150mg
+- Choline 30mg
+- Benfotiamine 20mg
