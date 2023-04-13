@@ -31,7 +31,7 @@ class Solution {
             l3.next = newNode;
             
             if(l1 != null) l1 = l1.next;
-    K
+    
             if(l2 != null) l2 = l2.next;
             l3 = l3.next;
         }
