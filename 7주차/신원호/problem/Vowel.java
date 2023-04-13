@@ -15,9 +15,9 @@ public class Vowel {
     char[] vowels = {'A', 'E', 'I', 'O', 'U'};
     int index = 0;
 
+
     public int solution(String word) {
         dfs("", 0);
-
         return book.get(word);
     }
 
