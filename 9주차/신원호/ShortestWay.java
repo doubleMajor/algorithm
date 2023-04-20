@@ -36,7 +36,7 @@ public class ShortestWay {
             }
 
             for (int i = 0; i < 4; i++) { // try all four directions
-                int nx = p.x + dx[i];
+                int nx = dx[i] + p.x;
                 int ny = p.y + dy[i];
 
                 if (nx < 0 || nx >= n || ny < 0 || ny >= m) continue; // out of bounds
