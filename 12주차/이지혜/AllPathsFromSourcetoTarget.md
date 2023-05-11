@@ -31,9 +31,7 @@ public class AllPathsFromSourcetoTarget {
                 this.dfs(result, route, graph, node, end);
             }
         }
-
         route.remove(route.size() - 1);
-        //route.clear(); 0 은 유지되어야 하므로 무조건 삭제하면 안됨.
     }
 }
 
