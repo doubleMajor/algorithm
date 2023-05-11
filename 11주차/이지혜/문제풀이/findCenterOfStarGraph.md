@@ -28,7 +28,9 @@ class Solution {
             }
 
         }
+        //getOrDefault
 
+        //속도가 느린 요인 코테에서 쓰기엔 별로다.
         Comparator<Entry<Integer, Integer>> comparator = new Comparator<Entry<Integer, Integer>>() {
             @Override
             public int compare(Entry<Integer, Integer> e1, Entry<Integer, Integer> e2) {
