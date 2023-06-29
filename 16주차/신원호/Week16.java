@@ -1,3 +1,7 @@
+package 신원호;
+
+import java.util.LinkedHashSet;
+
 class ListNode {
      int val;
      ListNode next;
@@ -68,5 +72,22 @@ class Solution {
         }
 
         return answer.next;
+    }
+}
+
+/**
+ * Remove Dulicates from Sorted Array
+ */
+class Solution {
+    public int removeDuplicates(int[] nums) {
+        LinkedHashSet<Integer> set = new LinkedHashSet();
+        for (int num : nums) {
+            set.add(num);
+        }
+        int i = 0;
+        for (int num : set) {
+            nums[i++] = num;
+        }
+        return set.size();
     }
 }
