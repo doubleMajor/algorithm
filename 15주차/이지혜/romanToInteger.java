@@ -26,6 +26,7 @@ public class romanToInteger {
         map.put('D', 500);
         map.put('M', 1000);
         int len = s.length(), result = map.get(s.charAt(len - 1));
+        // 작은 수가 큰 수 보다 오른쪽에 있으면 더해주고 왼쪽에 있으면 빼주면 됨.
         for (int i = len - 2; i >= 0; i--) {
             if (map.get(s.charAt(i)) >= map.get(s.charAt(i + 1)))
                 result += map.get(s.charAt(i));
