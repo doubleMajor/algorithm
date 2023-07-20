@@ -6,7 +6,7 @@ import java.util.*;
  * 3. 거리를 저장해둔다.
  * 4. 최대 거리를 가진 개수 반환
  */
-public class Solution {
+public class Solution10 {
 
     public static void main(String[] args) {
         int[][] edge = {{3, 6}, {4, 3}, {3, 2}, {1, 3}, {1, 2}, {2, 4}, {5, 2}};

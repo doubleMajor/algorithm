@@ -25,24 +25,22 @@ class Solution {
 }
 
 class Solution {
-    public int climbStairs(int n) {
-        return dfs(0, n);
+        public int climbStairs(int n) {
+            if (n <= 2) {
+                return n;
+            }
+
+            int[] dp = new int[n + 1];
+            dp[1] = 1;
+            dp[2] = 2;
+
+            for (int i = 3; i <= n; i++) {
+                dp[i] = dp[i - 1] + dp[i - 2];
+            }
+
+            return dp[n];
     }
 
-    private int dfs(int curr, int n) {
-        if (curr > n) {
-            return 0;
-        }
-
-        if (curr == n) {
-            return 1;
-        }
-
-        int oneStep = dfs(curr + 1, n);
-        int twoSteps = dfs(curr + 2, n);
-
-        return oneStep + twoSteps;
-    }
 }
 
 import java.util.ArrayList;
